@@ -21,18 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d8e9bbc-4288-4d56-99b0-fcfeed67a5a9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Designer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Designer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Developer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Developer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CompanyFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CompanyFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/DesignerFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DesignerFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163544_create_employees_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163730_create_developers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163742_create_designers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163755_create_companies_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,10 +199,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610317465555">
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610396037985">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317465555" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610396037985" />
     <state width="1557" height="222" key="GridCell.Tab.0.bottom" timestamp="1610338754539">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
