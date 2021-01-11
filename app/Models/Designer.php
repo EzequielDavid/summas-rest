@@ -9,10 +9,10 @@ class Designer extends Model
 {
     use HasFactory;
 
-    protected $fillable =['designer_id','type'];
+    protected $fillable =['employee_id','type'];
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class,'designer_id');
+        return $this->belongsTo(Employee::class);
     }
 }

@@ -23,7 +23,7 @@ class DesignerFactory extends Factory
     public function definition()
     {
         return [
-            'designer_id'=>Employee::factory(),
+            'employee_id'=>Employee::factory(),
             'type'=>$this->faker->randomElement(['web','graphic']),
         ];
     }

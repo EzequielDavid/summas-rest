@@ -14,11 +14,12 @@ class CreateDesignersTable extends Migration
     public function up()
     {
         Schema::create('designers', function (Blueprint $table) {
-            $table->id('designer_id');
+            $table->id();
+            $table->unsignedBigInteger('employee_id');
             $table->enum('type',['web','graphic']);
             $table->timestamps();
 
-            $table->foreign('designer_id')
+            $table->foreign('employee_id')
                 ->references('id')
                 ->on('employees')
                 ->onDelete('cascade')
