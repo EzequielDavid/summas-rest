@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeCollection;
+use App\Models\Developer;
+use App\Models\Designer;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Resources\Employee as EmployeeResources;
@@ -11,6 +13,7 @@ use App\Http\Resources\Developer as DeveloperResources;
 use App\Http\Resources\DeveloperCollection;
 use App\Http\Resources\Designer as DesignerResources;
 use App\Http\Resources\DesignerCollection;
+use Illuminate\Pagination\Paginator;
 
 class EmployeeController extends Controller
 {
@@ -21,7 +24,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return new EmployeeCollection(Employee::orderBy('id','desc')->get());
+
+        return new EmployeeCollection(Employee::with('developer')->get());
+       /*return [
+          'developers'=> new DeveloperCollection(Developer::orderBy('developer_id','desc')->paginate(5)),
+           'designers'=> new DesignerCollection(Designer::orderBy('designer_id','desc')->paginate(5))
+        ];*/
     }
 
     /**

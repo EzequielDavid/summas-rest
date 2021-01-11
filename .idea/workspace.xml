@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4d8e9bbc-4288-4d56-99b0-fcfeed67a5a9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Designer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Designer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Developer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Developer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="apiBackend" />
+        <entry key="$PROJECT_DIR$" value="migrationsModelsAndFactories" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -199,10 +202,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610396037985">
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610405234167">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610396037985" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610405234167" />
     <state width="1557" height="222" key="GridCell.Tab.0.bottom" timestamp="1610338754539">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
