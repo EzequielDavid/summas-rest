@@ -23,7 +23,7 @@ class DeveloperFactory extends Factory
     public function definition()
     {
         return [
-            'developer_id'=>Employee::factory(),
+            'employee_id'=>Employee::factory(),
             'languaje'=>$this->faker->randomElement(['php','net','python']),
         ];
     }

@@ -9,10 +9,10 @@ class Developer extends Model
 {
     use HasFactory;
 
-    protected $fillable =['developer_id','languaje'];
+    protected $fillable =['employee_id','languaje'];
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class,'developer_id');
+        return $this->belongsTo(Employee::class);
     }
 }
