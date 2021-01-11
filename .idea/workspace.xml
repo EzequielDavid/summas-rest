@@ -21,21 +21,32 @@
   <component name="ChangeListManager">
     <list default="true" id="4d8e9bbc-4288-4d56-99b0-fcfeed67a5a9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Designer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Designer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Developer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Developer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/CompanyFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CompanyFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DesignerFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DesignerFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163544_create_employees_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163730_create_developers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163742_create_designers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_10_163755_create_companies_table.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="migrationsModelsFactories" />
+        <entry key="$PROJECT_DIR$" value="apiBackend" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,6 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610316089035</updated>
       <workItem from="1610316113398" duration="4862000" />
+      <workItem from="1610382241347" duration="5502000" />
     </task>
     <servers />
   </component>
@@ -202,22 +214,22 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317465555" />
-    <state width="1557" height="222" key="GridCell.Tab.0.bottom" timestamp="1610317062910">
+    <state width="1557" height="222" key="GridCell.Tab.0.bottom" timestamp="1610338754539">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="222" key="GridCell.Tab.0.bottom/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317062910" />
-    <state width="1557" height="222" key="GridCell.Tab.0.center" timestamp="1610317062909">
+    <state width="1557" height="222" key="GridCell.Tab.0.bottom/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610338754539" />
+    <state width="1557" height="222" key="GridCell.Tab.0.center" timestamp="1610338754539">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="222" key="GridCell.Tab.0.center/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317062909" />
-    <state width="1557" height="222" key="GridCell.Tab.0.left" timestamp="1610317062909">
+    <state width="1557" height="222" key="GridCell.Tab.0.center/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610338754539" />
+    <state width="1557" height="222" key="GridCell.Tab.0.left" timestamp="1610338754538">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="222" key="GridCell.Tab.0.left/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317062909" />
-    <state width="1557" height="222" key="GridCell.Tab.0.right" timestamp="1610317062909">
+    <state width="1557" height="222" key="GridCell.Tab.0.left/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610338754538" />
+    <state width="1557" height="222" key="GridCell.Tab.0.right" timestamp="1610338754539">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="222" key="GridCell.Tab.0.right/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610317062909" />
+    <state width="1557" height="222" key="GridCell.Tab.0.right/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1610338754539" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1610319859573">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

@@ -23,7 +23,6 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'employee_id'=>Employee::factory(),
             'name'=>$this->faker->name,
             'email'=>$this->faker->email,
             'telephone'=>$this->faker->phoneNumber,

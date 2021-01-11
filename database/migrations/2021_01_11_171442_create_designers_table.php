@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDevelopersTable extends Migration
+class CreateDesignersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDevelopersTable extends Migration
      */
     public function up()
     {
-        Schema::create('developers', function (Blueprint $table) {
-            $table->id('employee_id');
-            $table->enum('languaje',['php','python','net']);
+        Schema::create('designers', function (Blueprint $table) {
+            $table->id('designer_id');
+            $table->enum('type',['web','graphic']);
             $table->timestamps();
 
-            $table->foreign('employee_id')
+            $table->foreign('designer_id')
                 ->references('id')
                 ->on('employees')
                 ->onDelete('cascade')
@@ -33,6 +33,6 @@ class CreateDevelopersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('developers');
+        Schema::dropIfExists('designers');
     }
 }

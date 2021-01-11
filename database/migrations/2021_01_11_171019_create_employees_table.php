@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesignersTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreateDesignersTable extends Migration
      */
     public function up()
     {
-        Schema::create('designers', function (Blueprint $table) {
-            $table->id('employee_id');
-            $table->enum('type',['web','graphic']);
+        Schema::create('employees', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->string('name');
+            $table->string('surname');
+            $table->integer('age');
             $table->timestamps();
 
-            $table->foreign('employee_id')
+            $table->foreign('company_id')
                 ->references('id')
-                ->on('employees')
+                ->on('companies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
         });
     }
 
@@ -34,6 +36,6 @@ class CreateDesignersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('designers');
+        Schema::dropIfExists('employees');
     }
 }

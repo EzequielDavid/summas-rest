@@ -18,11 +18,11 @@ class Employee extends Model
 
     public function developer()
     {
-        return $this->hasOne(Developer::class);
+        return $this->hasOne(Developer::class,'developer_id');
     }
 
     public function designer()
     {
-        return $this->hasOne(Designer::class);
+        return $this->hasOne(Designer::class,'designer_id');
     }
 }
