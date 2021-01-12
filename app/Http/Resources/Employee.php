@@ -7,6 +7,7 @@ use App\Models\Developer;
 use App\Http\Resources\Designer as DesignerResources;
 use App\Models\Designer;
 
+
 class Employee extends JsonResource
 {
     /**
@@ -23,13 +24,13 @@ class Employee extends JsonResource
             'name'      => $this->name,
             'surname'   => $this->surname,
             'age'       => $this->age,
+            'employable_type'=>$this->employable_type,
+            'employable_id'=>$this->employable_id,
+            'position'=> $this->employable,
             'created'   => $this->created_at->diffForHumans(),
             'created_at'=> $this->created_at->format('d-m-y'),
             'updated_at'=> $this->updated_at->format('d-m-y'),
-
-            /*'developer'=> new DeveloperResources(Developer::where('employee_id',$this->id)->first()),
-            'designer'=> new DesignerResources(Designer::where('employee_id',$this->id)->first())*/
-
+            
         ];
     }
 }

@@ -18,8 +18,8 @@ class Developer extends JsonResource
     public function toArray($request)
     {
         return [
-            'employee_id'=>$this->employee_id,
-            'languaje'=>$this->languaje,
+            'id'=>$this->id,
+            'language'=>$this->language,
             'created'   => $this->created_at->diffForHumans(),
             'created_at'=> $this->created_at->format('d-m-y'),
             'updated_at'=> $this->updated_at->format('d-m-y'),

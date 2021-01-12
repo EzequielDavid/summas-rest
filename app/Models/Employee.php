@@ -21,8 +21,4 @@ class Employee extends Model
         return $this->morphTo();
     }
 
-    public function profile()
-    {
-        return $this->morphTo('profileable');
-    }
 }

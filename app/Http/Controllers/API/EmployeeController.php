@@ -20,7 +20,7 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return EmployeeCollection
      */
     public function index()
     {
@@ -43,22 +43,22 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Employee $employee
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
-        //
+        return response()->json(new EmployeeResources($employee));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Employee $employee
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
         //
     }
@@ -66,11 +66,13 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Employee $employee
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->employable->delete();
+        $employee->delete();
+        return response()->json(null,204);
     }
 }
