@@ -18,12 +18,11 @@ class Developer extends JsonResource
     public function toArray($request)
     {
         return [
-            'developer_id'=>$this->developer_id,
+            'employee_id'=>$this->employee_id,
             'languaje'=>$this->languaje,
             'created'   => $this->created_at->diffForHumans(),
             'created_at'=> $this->created_at->format('d-m-y'),
             'updated_at'=> $this->updated_at->format('d-m-y'),
-            'employee'=> new EmployeeResources(Employee::find($this->developer_id)),
         ];
     }
 }

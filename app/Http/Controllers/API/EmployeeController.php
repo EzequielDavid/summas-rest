@@ -25,11 +25,8 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        return new EmployeeCollection(Employee::with('developer')->get());
-       /*return [
-          'developers'=> new DeveloperCollection(Developer::orderBy('developer_id','desc')->paginate(5)),
-           'designers'=> new DesignerCollection(Designer::orderBy('designer_id','desc')->paginate(5))
-        ];*/
+        return new EmployeeCollection(Employee::orderBy('id','desc')->paginate(5));
+
     }
 
     /**

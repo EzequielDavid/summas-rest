@@ -25,4 +25,9 @@ class Employee extends Model
     {
         return $this->hasOne(Designer::class);
     }
+
+    public function profile()
+    {
+        return $this->morphTo('profileable');
+    }
 }

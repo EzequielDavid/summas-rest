@@ -26,7 +26,9 @@ class Employee extends JsonResource
             'created'   => $this->created_at->diffForHumans(),
             'created_at'=> $this->created_at->format('d-m-y'),
             'updated_at'=> $this->updated_at->format('d-m-y'),
-            'developer'=> new DeveloperResources(Developer::find($this->id))
+
+            /*'developer'=> new DeveloperResources(Developer::where('employee_id',$this->id)->first()),
+            'designer'=> new DesignerResources(Designer::where('employee_id',$this->id)->first())*/
 
         ];
     }

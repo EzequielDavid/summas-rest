@@ -17,12 +17,11 @@ class Designer extends JsonResource
     public function toArray($request)
     {
         return [
-            'designer_id'=>$this->designer_id,
+            'employee_id'=>$this->employee_id,
             'type'=>$this->type,
             'created'   => $this->created_at->diffForHumans(),
             'created_at'=> $this->created_at->format('d-m-y'),
             'updated_at'=> $this->updated_at->format('d-m-y'),
-            'employee'=> new EmployeeResources(Employee::find($this->designer_id)),
         ];
     }
 }
