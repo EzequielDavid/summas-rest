@@ -16,14 +16,9 @@ class Employee extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function developer()
+    public function employable()
     {
-        return $this->hasOne(Developer::class);
-    }
-
-    public function designer()
-    {
-        return $this->hasOne(Designer::class);
+        return $this->morphTo();
     }
 
     public function profile()

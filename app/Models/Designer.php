@@ -9,10 +9,10 @@ class Designer extends Model
 {
     use HasFactory;
 
-    protected $fillable =['employee_id','type'];
+    protected $fillable =['type'];
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->morphOne(Employee::class,'employable');
     }
 }

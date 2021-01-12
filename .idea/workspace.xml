@@ -29,11 +29,21 @@
 =======
       <change beforePath="$PROJECT_DIR$/app/Models/Designer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Designer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Developer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Developer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/DesignerFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DesignerFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DeveloperFactory.php" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_171420_create_developers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_171420_create_developers_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_171442_create_designers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_171442_create_designers_table.php" afterDir="false" />
 >>>>>>> 75622af6fa832d4aff5881ed72bbe9d89e1281b5
+=======
+      <change beforePath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EmployeeFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_170940_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_170940_create_companies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_171019_create_employees_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_171420_create_developers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_171442_create_designers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+>>>>>>> ff8ad03e1d7da49118b1c3c46a4d4fcfe75c7f9b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

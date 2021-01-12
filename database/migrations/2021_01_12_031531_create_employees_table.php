@@ -19,6 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->integer('age');
+            $table->morphs('employable');
             $table->timestamps();
 
             $table->foreign('company_id')
