@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeCollection;
+use App\Models\Company;
 use App\Models\Developer;
 use App\Models\Designer;
 use App\Models\Employee;
@@ -33,11 +34,35 @@ class EmployeeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+       $position = strtolower($request->input('position'));
+
+       if($position == 'developer')
+       {
+           $employeePosition = Developer::create(['language'=> $request->input('language')]);
+           $employeeType = Developer::class;
+       }
+       else
+       {
+           $employeePosition = Designer::create(['type'=> $request->input('type')]);
+           $employeeType = Designer::class;
+       }
+
+       $employee = Employee::create(
+           [
+               'company_id'=> 1,
+               'name'=> $request->input('name'),
+               'surname'=> $request->input('surname'),
+               'age'=> $request->input('age'),
+               'employable_type'=> $employeeType,
+               'employable_id'=>$employeePosition->id
+           ]
+       );
+        return response()->json(new EmployeeResources($employee),201);
+
     }
 
     /**
