@@ -15,15 +15,8 @@ class CreateDevelopersTable extends Migration
     {
         Schema::create('developers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->enum('languaje',['php','python','net']);
+            $table->enum('language',['php','python','net']);
             $table->timestamps();
-
-            $table->foreign('employee_id')
-                ->references('id')
-                ->on('employees')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

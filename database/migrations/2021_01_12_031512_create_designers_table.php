@@ -15,15 +15,8 @@ class CreateDesignersTable extends Migration
     {
         Schema::create('designers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
             $table->enum('type',['web','graphic']);
             $table->timestamps();
-
-            $table->foreign('employee_id')
-                ->references('id')
-                ->on('employees')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

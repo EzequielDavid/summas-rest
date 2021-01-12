@@ -9,10 +9,11 @@ class Developer extends Model
 {
     use HasFactory;
 
-    protected $fillable =['employee_id','languaje'];
+    protected $fillable =['language'];
 
-    public function employee()
+        public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->morphOne(Employee::class,'employable');
     }
+
 }

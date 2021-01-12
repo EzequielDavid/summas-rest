@@ -20,7 +20,6 @@ class CreateCompaniesTable extends Migration
             $table->string('telephone');
             $table->timestamps();
 
-
         });
     }
 

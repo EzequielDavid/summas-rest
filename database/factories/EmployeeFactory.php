@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use App\Models\Designer;
+use App\Models\Developer;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,11 +24,15 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
+        $morphModel = $this->faker->randomElement([Developer::class,Designer::class]);
         return [
             'company_id'=>Company::factory(),
             'name'=>$this->faker->name,
             'surname'=>$this->faker->lastName,
             'age'=>$this->faker->numberBetween(18,50),
+            'employable_type'=> $morphModel,
+            'employable_id'=>$morphModel::factory(),
+
         ];
     }
 }
