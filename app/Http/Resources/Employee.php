@@ -19,17 +19,17 @@ class Employee extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'        => $this->id,
-            'company_id'=>$this->company_id,
-            'name'      => $this->name,
-            'surname'   => $this->surname,
-            'age'       => $this->age,
+            'id'             => $this->id,
+            'company_id'     =>$this->company_id,
+            'name'           => $this->name,
+            'surname'        => $this->surname,
+            'age'            => $this->age,
             'employable_type'=>$this->employable_type,
-            'employable_id'=>$this->employable_id,
-            'position'=> $this->employable,
-            'created'   => $this->created_at->diffForHumans(),
-            'created_at'=> $this->created_at->format('d-m-y'),
-            'updated_at'=> $this->updated_at->format('d-m-y'),
+            'employable_id'  =>$this->employable_id,
+            'position'       => $this->employable,
+            'created'        => $this->created_at->diffForHumans(),
+            'created_at'     => $this->created_at->format('d-m-y'),
+            'updated_at'     => $this->updated_at->format('d-m-y'),
 
         ];
     }
