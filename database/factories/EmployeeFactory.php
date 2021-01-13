@@ -25,8 +25,9 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         $morphModel = $this->faker->randomElement([Developer::class,Designer::class]);
+        $company = Company::first();
         return [
-            'company_id'=>Company::factory(),
+            'company_id'=> $company->id,
             'name'=>$this->faker->name,
             'surname'=>$this->faker->lastName,
             'age'=>$this->faker->numberBetween(18,50),
