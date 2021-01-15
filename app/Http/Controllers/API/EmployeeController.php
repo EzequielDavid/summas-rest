@@ -38,18 +38,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-       $position = strtolower($request->input('position'));
-
-       if($position == 'developer')
-       {
-           $employeePosition = Developer::create(['language'=> $request->input('language')]);
-           $employeeType = Developer::class;
-       }
-       else
-       {
-           $employeePosition = Designer::create(['type'=> $request->input('type')]);
-           $employeeType = Designer::class;
-       }
+        $positionInfo = $this->verifyPosition($request);
 
        $employee = Employee::create(
            [
@@ -57,8 +46,8 @@ class EmployeeController extends Controller
                'name'=> $request->input('name'),
                'surname'=> $request->input('surname'),
                'age'=> $request->input('age'),
-               'employable_type'=> $employeeType,
-               'employable_id'=>$employeePosition->id
+               'employable_type'=> $positionInfo['employee_type'],
+               'employable_id'=>$positionInfo['employee_position'],
            ]
        );
         return response()->json(new EmployeeResources($employee),201);
@@ -81,11 +70,21 @@ class EmployeeController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param Employee $employee
-     * @return void
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $positionInfo= $this->verifyPosition($request);
+
+        $employee->update([
+               'name'=> $request->input('name'),
+               'surname'=> $request->input('surname'),
+               'age'=> $request->input('age'),
+               'employable_type'=> $positionInfo['employee_type'],
+               'employable_id'=>$positionInfo['employee_position']
+        ]);
+
+        return response()->json(new EmployeeResources($employee),201);
     }
 
     /**
@@ -99,5 +98,25 @@ class EmployeeController extends Controller
         $employee->employable->delete();
         $employee->delete();
         return response()->json(null,204);
+    }
+
+    private function verifyPosition($request)
+    {
+        $position = strtolower($request->input('position'));
+
+        if($position == 'developer')
+        {
+            $employeePosition = Developer::create(['language'=> $request->input('language')]);
+            $employeeType = Developer::class;
+        }
+        else
+        {
+            $employeePosition = Designer::create(['type'=> $request->input('type')]);
+            $employeeType = Designer::class;
+        }
+        return[
+          'employee_type'=>$employeeType,
+           'employee_position'=>$employeePosition->id,
+        ];
     }
 }
