@@ -16,4 +16,14 @@ class EmployeeCollection extends ResourceCollection
     {
         return parent::toArray($request);
     }
+
+    public function with($request)
+    {
+            $employee = new \App\Models\Employee();
+        return [
+            'meta' => [
+                'average_age' => $employee->averageAge(),
+            ],
+        ];
+    }
 }

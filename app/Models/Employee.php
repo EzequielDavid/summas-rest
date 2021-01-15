@@ -21,4 +21,17 @@ class Employee extends Model
         return $this->morphTo();
     }
 
+    public function averageAge()
+    {
+        $ageSum=0;
+        $average=0;
+            $employees = self::all();
+        foreach($employees as $employee)
+        {
+            $ageSum += $employee->age;
+            $average = $ageSum/$employees->count();
+        }
+            return intval($average);
+    }
+
 }

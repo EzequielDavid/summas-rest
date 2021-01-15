@@ -28,7 +28,7 @@ class Employee extends JsonResource
             'employable_id'  =>$this->employable_id,
             'position'       => $this->employable,
             'created'        => $this->created_at->diffForHumans(),
-            'created_at'     => $this->created_at->format('d-m-y'),
+            'created_at'     => $this->created_at->format('d-m-Y'),
             'updated_at'     => $this->updated_at->format('d-m-y'),
 
         ];
