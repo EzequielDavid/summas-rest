@@ -4,20 +4,16 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeCollection;
-use App\Models\Company;
 use App\Models\Developer;
 use App\Models\Designer;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Resources\Employee as EmployeeResources;
-use App\Http\Resources\Developer as DeveloperResources;
-use App\Http\Resources\DeveloperCollection;
-use App\Http\Resources\Designer as DesignerResources;
-use App\Http\Resources\DesignerCollection;
 use Illuminate\Pagination\Paginator;
 
 class EmployeeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +34,19 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $positionInfo = $this->verifyPosition($request);
+        //Dejo codigo para expllicar porque lo saque
+       /* $position = strtolower($request->input('position'));
+
+        if($position == 'developer')
+        {
+            $employeePosition = Developer::create(['language'=> $request->input('language')]);
+            $employeeType = Developer::class;
+        }
+        else
+        {
+            $employeePosition = Designer::create(['type'=> $request->input('type')]);
+            $employeeType = Designer::class;
+        }
 
        $employee = Employee::create(
            [
@@ -46,11 +54,11 @@ class EmployeeController extends Controller
                'name'=> $request->input('name'),
                'surname'=> $request->input('surname'),
                'age'=> $request->input('age'),
-               'employable_type'=> $positionInfo['employee_type'],
-               'employable_id'=>$positionInfo['employee_position'],
+               'employable_type'=> $employeeType,
+               'employable_id'=>$employeePosition->id,
            ]
        );
-        return response()->json(new EmployeeResources($employee),201);
+        return response()->json(new EmployeeResources($employee),201);*/
 
     }
 
@@ -74,17 +82,29 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $positionInfo= $this->verifyPosition($request);
+        //Dejo codigo para expllicar porque lo saque
+        /*$position = strtolower($request->input('position'));
+
+        if($position == 'developer')
+        {
+            Developer::whereId($request->position_id)->update(['language'=> $request->input('language')]);
+            $employeeType = Developer::class;
+        }
+        else
+        {
+            Designer::whereId($request->position_id)->update(['type'=> $request->input('type')]);
+            $employeeType = Designer::class;
+        }
 
         $employee->update([
                'name'=> $request->input('name'),
                'surname'=> $request->input('surname'),
                'age'=> $request->input('age'),
-               'employable_type'=> $positionInfo['employee_type'],
-               'employable_id'=>$positionInfo['employee_position']
+               'employable_type'=> $employeeType,
+               'employable_id'=>$request->input('position_id')
         ]);
 
-        return response()->json(new EmployeeResources($employee),201);
+        return response()->json(new EmployeeResources($employee),201);*/
     }
 
     /**
@@ -92,31 +112,12 @@ class EmployeeController extends Controller
      *
      * @param Employee $employee
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy(Employee $employee)
     {
         $employee->employable->delete();
         $employee->delete();
         return response()->json(null,204);
-    }
-
-    private function verifyPosition($request)
-    {
-        $position = strtolower($request->input('position'));
-
-        if($position == 'developer')
-        {
-            $employeePosition = Developer::create(['language'=> $request->input('language')]);
-            $employeeType = Developer::class;
-        }
-        else
-        {
-            $employeePosition = Designer::create(['type'=> $request->input('type')]);
-            $employeeType = Designer::class;
-        }
-        return[
-          'employee_type'=>$employeeType,
-           'employee_position'=>$employeePosition->id,
-        ];
     }
 }

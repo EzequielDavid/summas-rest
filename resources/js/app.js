@@ -23,8 +23,7 @@ Vue.component('employee-component', require('./components/EmployeeComponent.vue'
 Vue.component('paginate-component', require('./components/PaginateComponent.vue').default);
 Vue.component('employee-detail-component', require('./components/EmployeeDetailComponent.vue').default);
 Vue.component('form-component', require('./components/FormComponent.vue').default);
-
-
+Vue.component('company-component', require('./components/company/CompanyComponent').default);
 
 const app = new Vue({
     el: '#app',

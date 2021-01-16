@@ -9,6 +9,10 @@
                 <form class="row" action="">
                     <div class="col-6">
                         <div class="form-group">
+                            <label class="form-control-label" for="">Company Id</label>
+                            <input  v-model="company_id" readonly class="form-control" type="number">
+                        </div>
+                        <div class="form-group">
                             <label class="form-control-label" for="">Name</label>
                                 <input  v-model="name" class="form-control" type="text">
                         </div>
@@ -42,7 +46,7 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <button v-on:click="send" class="btn btn-primary" type="submit">Send</button>
+                            <button v-on:click.prevent="send" class="btn btn-primary" type="submit">Send</button>
                         </div>
                     </div>
                     <div class="col-6 ">
@@ -59,10 +63,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: "FormComponent",
     data(){
         return{
+            company_id:1,
             name:'',
             surname:'',
             position:'',
@@ -77,7 +83,8 @@ export default {
     },
     methods:{
         send:function (){
-            axios.post('api/employees',{
+            axios.post('api/'+ this.position,{
+                company_id:this.company_id,
                 name:this.name,
                 surname:this.surname,
                 age:this.age,
@@ -87,20 +94,25 @@ export default {
             }).then(response=>{
                 if(response.status === 201)
                 {
-                    alert('created success')
+                    this.$emit('enterNew')
+                    alertify.alert('created success')
+                    this.enterNew=false;
+                    this.cleanForm()
                 }
             })
         },
 
         enterNewForm:function (){
-            if(this.enterNew===false)
-            {
-                this.enterNew=true;
-            }
-            else{
-                this.enterNew=false
-            }
+            this.enterNew = this.enterNew === false;
             console.log(this.enterNew)
+        },
+        cleanForm:function(){
+            this.name =''
+            this.surname=''
+            this.age=''
+            this.position=''
+            this.language=''
+            this.type =''
         }
 
     }

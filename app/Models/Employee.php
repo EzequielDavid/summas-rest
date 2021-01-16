@@ -23,7 +23,7 @@ class Employee extends Model
 
     public function averageAge()
     {
-        $ageSum=0;
+       /* $ageSum=0;
         $average=0;
             $employees = self::all();
         foreach($employees as $employee)
@@ -31,7 +31,7 @@ class Employee extends Model
             $ageSum += $employee->age;
             $average = $ageSum/$employees->count();
         }
-            return intval($average);
+            return intval($average);*/
     }
 
 }

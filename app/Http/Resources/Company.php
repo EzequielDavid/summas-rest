@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Designer;
+use App\Models\Developer;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Company extends JsonResource
@@ -19,9 +21,12 @@ class Company extends JsonResource
             'name'=>$this->name,
             'email'=>$this->email,
             'telephone'=>$this->telephone,
+            'quantity_of_employees'=> $this->employees_count,
+            'developers'=> $this->employees()->where('employable_type',Developer::class)->count(),
+            'designers'=> $this->employees()->where('employable_type',Designer::class)->count(),
             'created'   => $this->created_at->diffForHumans(),
-            'created_at'=> $this->created_at->format('d-m-y'),
-            'updated_at'=> $this->updated_at->format('d-m-y'),
+            'created_at'=> $this->created_at->format('d-m-Y'),
+            'updated_at'=> $this->updated_at->format('d-m-Y'),
         ];
     }
 }

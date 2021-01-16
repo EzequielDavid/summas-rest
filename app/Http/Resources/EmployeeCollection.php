@@ -19,10 +19,11 @@ class EmployeeCollection extends ResourceCollection
 
     public function with($request)
     {
-            $employee = new \App\Models\Employee();
+            //$employee = new \App\Models\Employee();
+
         return [
             'meta' => [
-                'average_age' => $employee->averageAge(),
+                'average_age' => round(\App\Models\Employee::all()->avg('age'),0)
             ],
         ];
     }

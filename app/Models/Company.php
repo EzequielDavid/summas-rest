@@ -9,7 +9,12 @@ class Company extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['employee_id','name','email','telephone'];
+    protected $fillable = ['name','email','telephone'];
+    protected $withCount = ['employees'];
+    protected $casts=[
+        'created_at'=>'datetime:d-m-Y',
+        'updated_at'=>'datetime:d-m-Y',
+        ];
 
     public function employees()
     {

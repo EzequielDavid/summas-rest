@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <label class="form-control-label" for="">Employee Id</label>
-                        <input  v-model="employee.id" class="form-control" type="number">
+                        <input  v-model="employee.id" class="form-control" type="number" readonly="readonly">
                     </div>
 
                     <div class="form-group">
@@ -31,7 +31,10 @@
                                 <input type="text" readonly="readonly" value="Designer">
                             </label>
                             <label class="form-control-label" for="">Type
-                                <input type="text" v-bind:language="employee.position.type" v-model="employee.position.type">
+                                <select v-model="employee.position.type" class="form-control" name="type">
+                                <option value="web">Web</option>
+                                <option value="graphic">Graphic</option>
+                                </select>
                             </label>
                         </div>
 
@@ -40,16 +43,25 @@
                                 <input type="text"  readonly="readonly" value="Developer">
                             </label>
                             <label class="form-control-label" for="">Language
-                                <input type="text" v-bind:language="employee.position.language" v-model="employee.position.language">
+                                <select  v-model="employee.position.language" class="form-control" name="language">
+                                    <option value="php">Php</option>
+                                    <option value="net">Net</option>
+                                    <option value="python">Python</option>
+                                </select>
                             </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <button v-on:click="update(employee)" class="btn btn-primary" type="submit">Update</button>
+                        <button v-on:click.prevent="update(employee)" class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </div>
                 <div class="col-6 ">
+                    <div class="form-group">
+                        <label class="form-control-label" for="">Position Id
+                            <input v-model="employee.position.id" class="form-control" type="number" readonly="readonly">
+                        </label>
+                    </div>
                     <div class="form-group">
                         <label class="form-control-label" for="">Age
                             <input v-model="employee.age" class="form-control" type="number">
@@ -98,19 +110,23 @@ export default {
             else{
                 this.position = 'designer'
             }
+            this.closeDetail()
 
-            axios.put('api/employees/'+employee.id,{
-                id: employee.id,
+            axios.put('api/'+this.position+'/'+employee.position.id,{
+                id:employee.id,
+                company_id:employee.company_id,
                 name: employee.name,
                 surname:employee.surname,
+                position_id:employee.position.id,
                 age:employee.age,
-                position:this.position,
                 language:employee.position.language,
                 type:employee.position.type
             }).then(response=>{
                 if(response.status === 201)
                 {
-                    alert('Updated success')
+                   alertify.alert('Updated success')
+                    this.$emit('update')
+
                 }
 
             })

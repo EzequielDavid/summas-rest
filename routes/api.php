@@ -18,5 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('employees',\App\Http\Controllers\API\EmployeeController::class);
+Route::apiResource('employees', \App\Http\Controllers\API\EmployeeController::class);
+
+Route::apiResource('company', \App\Http\Controllers\API\CompanyController::class)->only(['index','show','update']);
+
+Route::apiResource('developer',\App\Http\Controllers\API\DeveloperController::class);
+Route::apiResource('designer',\App\Http\Controllers\API\DesignerController::class);
 
