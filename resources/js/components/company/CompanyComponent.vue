@@ -60,6 +60,11 @@ export default {
                 email:this.company.email,
                 telephone:this.company.telephone,
             }).then(response=>{
+                alertify.confirm('Update Company', 'Are you sure to Update this company data?', function(){
+                    alertify.success('Updated') }
+                    , function(){ alertify.error('Cancel ')
+                });
+                this.getCompany()
                this.edit=true
             })
         },

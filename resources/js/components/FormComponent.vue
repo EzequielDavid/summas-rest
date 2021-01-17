@@ -73,22 +73,19 @@ export default {
     name: "FormComponent",
     data(){
         return{
-            fields:{company_id:1},
+            fields:{company_id:1,position:'developer'},
             enterNew:false,
             errors:{},
         }
     },
-    mounted() {
-        this.send();
-    },
     methods:{
         send:function (){
             axios.post('api/'+ this.fields.position,this.fields).then(response=>{
-                this.fields={}
+                this.fields={company_id:1,position:'developer'}
                 if(response.status === 201)
                 {
                     this.$emit('enterNew')
-                    alertify.alert('Created Success')
+                    alertify.alert('Enter New','Created Success')
                     this.enterNew=false;
                     this.errors={}
                 }

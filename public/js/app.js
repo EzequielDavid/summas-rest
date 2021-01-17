@@ -1952,7 +1952,11 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().delete('api/employees/' + employee.id).then(function (response) {
         _this3.getEmployees();
 
-        alertify.alert('Delete Success');
+        alertify.confirm('Delete Employee', 'Are you sure to delete this employee?', function () {
+          alertify.success('Deleted');
+        }, function () {
+          alertify.error('Cancel ');
+        });
       });
     }
   }
@@ -2094,7 +2098,11 @@ __webpack_require__.r(__webpack_exports__);
         type: employee.position.type
       }).then(function (response) {
         if (response.status === 201) {
-          alertify.alert('Updated success');
+          alertify.confirm('Update Employee', 'Are you sure to update this employee?', function () {
+            alertify.success('Updated');
+          }, function () {
+            alertify.error('Cancel ');
+          });
 
           _this.$emit('update');
         }
@@ -2193,26 +2201,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fields: {
-        company_id: 1
+        company_id: 1,
+        position: 'developer'
       },
       enterNew: false,
       errors: {}
     };
-  },
-  mounted: function mounted() {
-    this.send();
   },
   methods: {
     send: function send() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/' + this.fields.position, this.fields).then(function (response) {
-        _this.fields = {};
+        _this.fields = {
+          company_id: 1,
+          position: 'developer'
+        };
 
         if (response.status === 201) {
           _this.$emit('enterNew');
 
-          alertify.alert('Created Success');
+          alertify.alert('Enter New', 'Created Success');
           _this.enterNew = false;
           _this.errors = {};
         }
@@ -2379,6 +2388,14 @@ __webpack_require__.r(__webpack_exports__);
         email: this.company.email,
         telephone: this.company.telephone
       }).then(function (response) {
+        alertify.confirm('Update Company', 'Are you sure to Update this company data?', function () {
+          alertify.success('Updated');
+        }, function () {
+          alertify.error('Cancel ');
+        });
+
+        _this2.getCompany();
+
         _this2.edit = true;
       });
     },
@@ -6917,7 +6934,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.quantityText[data-v-4885e2bd]{\r\n    font-size: 1.1em;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.quantityText[data-v-4885e2bd]{\n    font-size: 1.1em;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38667,7 +38684,7 @@ var render = function() {
           "div",
           {
             staticClass: "card-header bg-dark text-white",
-            staticStyle: { "font-size": "1.3em" }
+            staticStyle: { "font-size": "1.4em" }
           },
           [
             _vm._v("\n                Employees\n                "),
@@ -38703,7 +38720,7 @@ var render = function() {
                     expression: "orderParam"
                   }
                 ],
-                staticClass: "float-right mr-3",
+                staticClass: "float-right mr-3 form-control-sm",
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter

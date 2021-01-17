@@ -125,7 +125,8 @@ export default {
             }).then(response=>{
                 if(response.status === 201)
                 {
-                   alertify.alert('Updated success')
+                    alertify.confirm('Update Employee', 'Are you sure to update this employee?', function(){ alertify.success('Updated') }
+                        , function(){ alertify.error('Cancel ')});
                     this.$emit('update')
 
                 }

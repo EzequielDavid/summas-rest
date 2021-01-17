@@ -5,11 +5,11 @@
         </form-component>
 
         <div class="card">
-                <div class="card-header bg-dark text-white" style="font-size: 1.3em">
+                <div class="card-header bg-dark text-white" style="font-size: 1.4em">
                     Employees
                     <p class="text-success" v-text="'Average Age'+' '+ averageAge"></p>
                     <button v-on:click.prevent="getEmployees" class="btn btn-secondary float-right">OrderBy</button>
-                    <select v-model="orderParam" class="float-right mr-3">
+                    <select  v-model="orderParam" class="float-right mr-3 form-control-sm">
                         <option value="id">Id</option>
                         <option value="name">Name</option>
                         <option value="surname">surname</option>
@@ -101,7 +101,9 @@ import axios from 'axios'
                 {
                     axios.delete('api/employees/'+employee.id).then(response=>{
                         this.getEmployees();
-                        alertify.alert('Delete Success')
+                        alertify.confirm('Delete Employee', 'Are you sure to delete this employee?', function(){ alertify.success('Deleted') }
+                            , function(){ alertify.error('Cancel ')});
+
                     });
                 },
             }
