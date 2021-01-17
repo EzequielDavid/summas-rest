@@ -28,7 +28,7 @@ class DeveloperController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+         $this->validate($request, [
             'language' => 'required|in:php,python,net',
             'name'=> 'required',
             'surname'=> 'required',

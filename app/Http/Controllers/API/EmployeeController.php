@@ -19,10 +19,9 @@ class EmployeeController extends Controller
      *
      * @return EmployeeCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        return new EmployeeCollection(Employee::orderBy('id','desc')->paginate(5));
+        return new EmployeeCollection(Employee::orderBy($request->input('orderParam'),'desc')->paginate(5));
 
     }
 
