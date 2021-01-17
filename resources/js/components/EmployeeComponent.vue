@@ -8,13 +8,19 @@
                 <div class="card-header bg-dark text-white" style="font-size: 1.3em">
                     Employees
                     <p class="text-success" v-text="'Average Age'+' '+ averageAge"></p>
+                    <button v-on:click.prevent="getEmployees" class="btn btn-secondary float-right">OrderBy</button>
+                    <select v-model="orderParam" class="float-right mr-3">
+                        <option value="id">Id</option>
+                        <option value="name">Name</option>
+                        <option value="surname">surname</option>
+                    </select>
                 </div>
                 <div class="card-body m-auto">
                     <div class="col-md-12">
                         <table class="table table-hover table-striped table-responsive">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col" class="">Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Age</th>
@@ -63,6 +69,7 @@ import axios from 'axios'
                 designer:'Designer',
                 developer:'Developer',
                 meta:{},
+                orderParam:'id'
                 }
         },
         mounted() {
@@ -72,9 +79,10 @@ import axios from 'axios'
             {
                 getEmployees: function(page)
                 {
-                    axios.get('api/employees',{
+                    axios.get('api/employees?orderParam=',{
                         params:{
-                            page
+                            page,
+                            orderParam:this.orderParam
                         }
                     }).then(response=>{
                         this.employees = response.data.data

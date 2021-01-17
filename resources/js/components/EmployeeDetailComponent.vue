@@ -94,6 +94,7 @@ export default {
             language:'',
             type:'',
             age:'',
+            fields:{},
         }
     },
     methods:{
