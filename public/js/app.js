@@ -1900,6 +1900,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1910,7 +1916,8 @@ __webpack_require__.r(__webpack_exports__);
       close: '',
       designer: 'Designer',
       developer: 'Developer',
-      meta: {}
+      meta: {},
+      orderParam: 'id'
     };
   },
   mounted: function mounted() {
@@ -1920,9 +1927,10 @@ __webpack_require__.r(__webpack_exports__);
     getEmployees: function getEmployees(page) {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/employees', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/employees?orderParam=', {
         params: {
-          page: page
+          page: page,
+          orderParam: this.orderParam
         }
       }).then(function (response) {
         _this.employees = response.data.data;
@@ -2057,7 +2065,8 @@ __webpack_require__.r(__webpack_exports__);
       position: '',
       language: '',
       type: '',
-      age: ''
+      age: '',
+      fields: {}
     };
   },
   methods: {
@@ -2173,19 +2182,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FormComponent",
   data: function data() {
     return {
-      company_id: 1,
-      name: '',
-      surname: '',
-      position: '',
-      language: '',
-      type: '',
-      age: '',
-      enterNew: false
+      fields: {
+        company_id: 1
+      },
+      enterNew: false,
+      errors: {}
     };
   },
   mounted: function mounted() {
@@ -2195,36 +2206,25 @@ __webpack_require__.r(__webpack_exports__);
     send: function send() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/' + this.position, {
-        company_id: this.company_id,
-        name: this.name,
-        surname: this.surname,
-        age: this.age,
-        position: this.position,
-        language: this.language,
-        type: this.type
-      }).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/' + this.fields.position, this.fields).then(function (response) {
+        _this.fields = {};
+
         if (response.status === 201) {
           _this.$emit('enterNew');
 
-          alertify.alert('created success');
+          alertify.alert('Created Success');
           _this.enterNew = false;
-
-          _this.cleanForm();
+          _this.errors = {};
+        }
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors;
         }
       });
     },
     enterNewForm: function enterNewForm() {
       this.enterNew = this.enterNew === false;
       console.log(this.enterNew);
-    },
-    cleanForm: function cleanForm() {
-      this.name = '';
-      this.surname = '';
-      this.age = '';
-      this.position = '';
-      this.language = '';
-      this.type = '';
     }
   }
 });
@@ -6917,7 +6917,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.quantityText[data-v-4885e2bd]{\n    font-size: 1.1em;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.quantityText[data-v-4885e2bd]{\r\n    font-size: 1.1em;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38676,7 +38676,60 @@ var render = function() {
               domProps: {
                 textContent: _vm._s("Average Age" + " " + _vm.averageAge)
               }
-            })
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary float-right",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.getEmployees($event)
+                  }
+                }
+              },
+              [_vm._v("OrderBy")]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.orderParam,
+                    expression: "orderParam"
+                  }
+                ],
+                staticClass: "float-right mr-3",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.orderParam = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "id" } }, [_vm._v("Id")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "name" } }, [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "surname" } }, [
+                  _vm._v("surname")
+                ])
+              ]
+            )
           ]
         ),
         _vm._v(" "),
@@ -39292,19 +39345,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.company_id,
-                      expression: "company_id"
+                      value: _vm.fields.company_id,
+                      expression: "fields.company_id"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { readonly: "", type: "number" },
-                  domProps: { value: _vm.company_id },
+                  domProps: { value: _vm.fields.company_id },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.company_id = $event.target.value
+                      _vm.$set(_vm.fields, "company_id", $event.target.value)
                     }
                   }
                 })
@@ -39322,22 +39375,28 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
+                      value: _vm.fields.name,
+                      expression: "fields.name"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text" },
-                  domProps: { value: _vm.name },
+                  domProps: { value: _vm.fields.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.name = $event.target.value
+                      _vm.$set(_vm.fields, "name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors.name
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.name[0]))
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -39352,22 +39411,28 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.surname,
-                      expression: "surname"
+                      value: _vm.fields.surname,
+                      expression: "fields.surname"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text" },
-                  domProps: { value: _vm.surname },
+                  domProps: { value: _vm.fields.surname },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.surname = $event.target.value
+                      _vm.$set(_vm.fields, "surname", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors.surname
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.surname[0]))
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -39383,8 +39448,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.position,
-                            expression: "position"
+                            value: _vm.fields.position,
+                            expression: "fields.position"
                           }
                         ],
                         staticClass: "form-control",
@@ -39399,9 +39464,13 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.position = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            _vm.$set(
+                              _vm.fields,
+                              "position",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
@@ -39422,7 +39491,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _vm.position === "developer"
+                _vm.fields.position === "developer"
                   ? _c(
                       "label",
                       { staticClass: "form-control-label", attrs: { for: "" } },
@@ -39435,8 +39504,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.language,
-                                expression: "language"
+                                value: _vm.fields.language,
+                                expression: "fields.language"
                               }
                             ],
                             staticClass: "form-control",
@@ -39451,9 +39520,13 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.language = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
+                                _vm.$set(
+                                  _vm.fields,
+                                  "language",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
                               }
                             }
                           },
@@ -39468,12 +39541,20 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", { attrs: { value: "python" } }, [
                               _vm._v("Python")
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _vm.errors && _vm.errors.language
+                              ? _c(
+                                  "div",
+                                  { staticClass: "alert alert-danger" },
+                                  [_vm._v(_vm._s(_vm.errors.language[0]))]
+                                )
+                              : _vm._e()
                           ]
                         )
                       ]
                     )
-                  : _vm.position === "designer"
+                  : _vm.fields.position === "designer"
                   ? _c(
                       "label",
                       { staticClass: "form-control-label", attrs: { for: "" } },
@@ -39486,8 +39567,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.type,
-                                expression: "type"
+                                value: _vm.fields.type,
+                                expression: "fields.type"
                               }
                             ],
                             staticClass: "form-control",
@@ -39502,9 +39583,13 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.type = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
+                                _vm.$set(
+                                  _vm.fields,
+                                  "type",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
                               }
                             }
                           },
@@ -39515,7 +39600,15 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", { attrs: { value: "graphic" } }, [
                               _vm._v("Graphic")
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _vm.errors && _vm.errors.type
+                              ? _c(
+                                  "div",
+                                  { staticClass: "alert alert-danger" },
+                                  [_vm._v(_vm._s(_vm.errors.type[0]))]
+                                )
+                              : _vm._e()
                           ]
                         )
                       ]
@@ -39553,22 +39646,28 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.age,
-                          expression: "age"
+                          value: _vm.fields.age,
+                          expression: "fields.age"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: { type: "number" },
-                      domProps: { value: _vm.age },
+                      domProps: { value: _vm.fields.age },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.age = $event.target.value
+                          _vm.$set(_vm.fields, "age", $event.target.value)
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.age
+                      ? _c("div", { staticClass: "alert alert-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.age[0]))
+                        ])
+                      : _vm._e()
                   ]
                 )
               ])

@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('employees', \App\Http\Controllers\API\EmployeeController::class);
+Route::apiResource('employees', \App\Http\Controllers\API\EmployeeController::class)->except(['index']);
+Route::get('employees/{orderParam?}',[\App\Http\Controllers\API\EmployeeController::class,'index'])->name('employees.index');
 
 Route::apiResource('company', \App\Http\Controllers\API\CompanyController::class)->only(['index','show','update']);
 
