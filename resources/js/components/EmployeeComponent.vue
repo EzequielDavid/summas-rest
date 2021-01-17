@@ -14,6 +14,8 @@
                         <option value="name">Name</option>
                         <option value="surname">surname</option>
                     </select>
+                    <input type="search" v-model="filterParam" placeholder="Search" class="form-control-sm">
+                    <button class="btn btn-success" v-on:click.prevent="filterSearch"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="card-body m-auto">
                     <div class="col-md-12">
@@ -39,8 +41,16 @@
                                 <td v-if="employee.position.type" v-text="designer"></td>
                                 <td v-else v-text="developer"></td>
                                 <td v-text="employee.created"></td>
-                                <td><a href="#" class="btn btn-primary btn-block" type="submit" v-on:click.prevent="getEmployee(employee)">View Detail</a></td>
-                                <td><a href="#" class="btn btn-danger btn-block" type="submit" v-on:click.prevent="deleteEmployee(employee)">Delete</a></td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-block" type="submit" v-on:click.prevent="getEmployee(employee)">View Detail
+                                    <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-danger btn-block" type="submit" v-on:click.prevent="deleteEmployee(employee)">Delete
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                             <tfoot>
@@ -69,7 +79,8 @@ import axios from 'axios'
                 designer:'Designer',
                 developer:'Developer',
                 meta:{},
-                orderParam:'id'
+                orderParam:'id',
+                filterParam:'',
                 }
         },
         mounted() {
@@ -106,6 +117,18 @@ import axios from 'axios'
 
                     });
                 },
+                filterSearch:function(){
+                    const result = this.employees.filter(
+                        response=>response.name==this.filterParam || response.surname==this.filterParam || response.age==this.filterParam
+                        || response.id==this.filterParam || response.position.language ==this.filterParam || response.position.language ==this.filterParam
+                    )
+                    if(result=='')
+                    {
+                        this.getEmployees()
+                    }
+                    return this.employees=result
+
+                }
             }
     }
 </script>

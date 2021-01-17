@@ -1906,6 +1906,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1917,7 +1927,8 @@ __webpack_require__.r(__webpack_exports__);
       designer: 'Designer',
       developer: 'Developer',
       meta: {},
-      orderParam: 'id'
+      orderParam: 'id',
+      filterParam: ''
     };
   },
   mounted: function mounted() {
@@ -1958,6 +1969,19 @@ __webpack_require__.r(__webpack_exports__);
           alertify.error('Cancel ');
         });
       });
+    },
+    filterSearch: function filterSearch() {
+      var _this4 = this;
+
+      var result = this.employees.filter(function (response) {
+        return response.name == _this4.filterParam || response.surname == _this4.filterParam || response.age == _this4.filterParam || response.id == _this4.filterParam || response.position.language == _this4.filterParam || response.position.language == _this4.filterParam;
+      });
+
+      if (result == '') {
+        this.getEmployees();
+      }
+
+      return this.employees = result;
     }
   }
 });
@@ -2202,7 +2226,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       fields: {
         company_id: 1,
-        position: 'developer'
+        position: 'developer',
+        language: 'php',
+        type: 'web'
       },
       enterNew: false,
       errors: {}
@@ -2213,15 +2239,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/' + this.fields.position, this.fields).then(function (response) {
-        _this.fields = {
-          company_id: 1,
-          position: 'developer'
-        };
-
         if (response.status === 201) {
           _this.$emit('enterNew');
 
           alertify.alert('Enter New', 'Created Success');
+          _this.fields = {
+            company_id: 1,
+            position: 'developer',
+            language: 'php',
+            type: 'web'
+          };
           _this.enterNew = false;
           _this.errors = {};
         }
@@ -38746,6 +38773,42 @@ var render = function() {
                   _vm._v("surname")
                 ])
               ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filterParam,
+                  expression: "filterParam"
+                }
+              ],
+              staticClass: "form-control-sm",
+              attrs: { type: "search", placeholder: "Search" },
+              domProps: { value: _vm.filterParam },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filterParam = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.filterSearch($event)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-search" })]
             )
           ]
         ),
@@ -38806,7 +38869,12 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("View Detail")]
+                          [
+                            _vm._v(
+                              "View Detail\n                                "
+                            ),
+                            _c("i", { staticClass: "fas fa-eye" })
+                          ]
                         )
                       ]),
                       _vm._v(" "),
@@ -38823,7 +38891,12 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Delete")]
+                          [
+                            _vm._v(
+                              "Delete\n                                    "
+                            ),
+                            _c("i", { staticClass: "far fa-trash-alt" })
+                          ]
                         )
                       ])
                     ])
