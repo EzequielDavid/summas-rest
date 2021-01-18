@@ -18,7 +18,6 @@ window.Vue = require('vue').default;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('managment-component', require('./components/ManagmentComponent.vue').default);
 Vue.component('employee-component', require('./components/EmployeeComponent.vue').default);
 Vue.component('paginate-component', require('./components/PaginateComponent.vue').default);
 Vue.component('employee-detail-component', require('./components/EmployeeDetailComponent.vue').default);
