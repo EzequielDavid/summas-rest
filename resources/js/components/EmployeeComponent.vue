@@ -15,7 +15,7 @@
                         <option value="surname">surname</option>
                     </select>
                     <input type="search" v-model="filterParam" placeholder="Search" class="form-control-sm">
-                    <button class="btn btn-success" v-on:click.prevent="filterSearch"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-secondary" v-on:click.prevent="filterSearch"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="card-body m-auto">
                     <div class="col-md-12">
@@ -42,7 +42,8 @@
                                 <td v-else v-text="developer"></td>
                                 <td v-text="employee.created"></td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-block" type="submit" v-on:click.prevent="getEmployee(employee)">View Detail
+                                    <a data-toggle="modal" data-target="#detail-modal" class="btn btn-primary btn-block" type="submit" v-on:click.prevent="getEmployee(employee)">
+                                        View Detail
                                     <i class="fas fa-eye"></i>
                                     </a>
                                 </td>
@@ -59,10 +60,23 @@
                         </table>
                     </div>
                 </div>
-            <div>
-                <employee-detail-component v-on:update="getEmployees" :employee="employee" :close="close">
+        </div>
+        <div class="modal fade" id="detail-modal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Update Employee</h2>
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <employee-detail-component v-on:update="getEmployees" :employee="employee" :close="close">
 
-                </employee-detail-component>
+                        </employee-detail-component>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

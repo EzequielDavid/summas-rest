@@ -47,10 +47,10 @@
                 </a>
                 @auth()
                     <div class="ml-4">
-                        <a class="navbar-text text-primary" href="{{ route('home') }}">
+                        <a class="navbar-text" href="{{ route('home') }}">
                             Employees Management
                         </a>
-                        <a class="navbar-text text-primary ml-4" href="{{ route('company') }}">
+                        <a class="navbar-text ml-4" href="{{ route('company') }}">
                             Company Management
                         </a>
                     </div>
