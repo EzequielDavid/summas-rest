@@ -1,4 +1,4 @@
-Step One: Create database, 
-Step two: Set the database name in .env file 
-Step three: Run "php artisan migrate --seed" whit this generate test data and the admin user.
+Step One: Create database.
+Step two: Set the database name in .env file.
+Step three: Run "php artisan migrate --seed" with this generate test data and the admin user.
 
