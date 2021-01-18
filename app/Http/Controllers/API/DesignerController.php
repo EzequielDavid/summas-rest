@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDesigner;
 use App\Http\Resources\Employee as EmployeeResources;
 use App\Models\Designer;
 use App\Models\Employee;
@@ -26,15 +27,8 @@ class DesignerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreDesigner $request)
     {
-        $this->validate($request, [
-            'type' => 'required|in:web,graphic',
-            'name'=> 'required',
-            'surname'=> 'required',
-            'age'=> 'required',
-            'company_id'=>'required|exists:companies,id'
-        ]);
 
         $employee = Designer::create([
             'type' => $request->input('type')
@@ -64,16 +58,6 @@ class DesignerController extends Controller
      */
     public function update(Request $request,Designer $designer)
     {
-        $this->validate($request, [
-            'type' => 'required|in:web,graphic',
-            'name'=> 'required',
-            'surname'=> 'required',
-            'age'=> 'required',
-            'company_id'=>'required|exists:companies,id',
-            'id'=>'required',
-            'position_id'=>'required'
-        ]);
-
         $designer->update([
             'type'=> $request->input('type')
         ]);

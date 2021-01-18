@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDeveloper;
+use App\Http\Requests\UpdateDeveloper;
 use App\Http\Resources\Employee as EmployeeResources;
 use App\Models\Developer;
 use App\Models\Employee;
@@ -26,15 +28,8 @@ class DeveloperController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreDeveloper $request)
     {
-         $this->validate($request, [
-            'language' => 'required|in:php,python,net',
-            'name'=> 'required',
-            'surname'=> 'required',
-            'age'=> 'required',
-            'company_id'=>'required|exists:companies,id'
-        ]);
 
        $employee = Developer::create([
            'language' => $request->input('language')
@@ -61,17 +56,8 @@ class DeveloperController extends Controller
      * @param Developer $developer
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request,Developer $developer)
+    public function update(UpdateDeveloper $request,Developer $developer)
     {
-        $this->validate($request, [
-        'language' => 'required|in:php,python,net',
-        'name'=> 'required',
-        'surname'=> 'required',
-        'age'=> 'required',
-        'company_id'=>'required|exists:companies,id',
-        'id'=>'required',
-        'position_id'=>'required'
-    ]);
 
              $developer->update([
                 'language'=> $request->input('language')
