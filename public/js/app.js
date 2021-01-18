@@ -39019,10 +39019,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-footer" }, [
       _c(
         "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { "data-dismiss": "modal" }
-        },
+        { staticClass: "btn btn-danger", attrs: { "data-dismiss": "modal" } },
         [_vm._v("Close")]
       )
     ])

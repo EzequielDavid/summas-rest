@@ -74,7 +74,7 @@
                         </employee-detail-component>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
