@@ -58,7 +58,6 @@ class DeveloperController extends Controller
      */
     public function update(UpdateDeveloper $request,Developer $developer)
     {
-
              $developer->update([
                 'language'=> $request->input('language')
             ]);

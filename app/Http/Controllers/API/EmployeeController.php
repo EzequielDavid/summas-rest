@@ -21,7 +21,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        return new EmployeeCollection(Employee::orderBy($request->input('orderParam'),'desc')->paginate(5));
+        return new EmployeeCollection(Employee::orderBy($request->input('orderParam','id'),'desc')->paginate(5));
 
     }
 
