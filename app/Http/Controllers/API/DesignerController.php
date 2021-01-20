@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDesigner;
+use App\Http\Requests\UpdateDesigner;
 use App\Http\Resources\Employee as EmployeeResources;
 use App\Models\Designer;
 use App\Models\Employee;
@@ -56,7 +57,7 @@ class DesignerController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request,Designer $designer)
+    public function update(UpdateDesigner $request,Designer $designer)
     {
         $designer->update([
             'type'=> $request->input('type')
