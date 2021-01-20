@@ -124,11 +124,15 @@ import axios from 'axios'
                 },
                 deleteEmployee: function(employee)
                 {
-                    axios.delete('api/employees/'+employee.id).then(response=>{
-                        this.getEmployees();
-                        alertify.confirm('Delete Employee', 'Are you sure to delete this employee?', function(){ alertify.success('Deleted') }
-                            , function(){ alertify.error('Cancel ')});
-
+                    alertify.confirm('Delete Employee', 'Are you sure to delete this Employee?',
+                        ()=>{
+                            axios.delete('api/employees/'+employee.id).then(response=>{
+                                this.getEmployees();
+                            });
+                        alertify.success('Deleted Succes')
+                        }
+                        , ()=>{
+                        alertify.error('Cancel')
                     });
                 },
                 filterSearch:function(){

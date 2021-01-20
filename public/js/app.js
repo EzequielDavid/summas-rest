@@ -1974,14 +1974,13 @@ __webpack_require__.r(__webpack_exports__);
     deleteEmployee: function deleteEmployee(employee) {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().delete('api/employees/' + employee.id).then(function (response) {
-        _this3.getEmployees();
-
-        alertify.confirm('Delete Employee', 'Are you sure to delete this employee?', function () {
-          alertify.success('Deleted');
-        }, function () {
-          alertify.error('Cancel ');
+      alertify.confirm('Delete Employee', 'Are you sure to delete this Employee?', function () {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().delete('api/employees/' + employee.id).then(function (response) {
+          _this3.getEmployees();
         });
+        alertify.success('Deleted Succes');
+      }, function () {
+        alertify.error('Cancel');
       });
     },
     filterSearch: function filterSearch() {
